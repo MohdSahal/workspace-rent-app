@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// Utility functions
+// Utility functions--
 const getDaysInMonth = (date: Date) => {
   return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 };
@@ -20,7 +20,7 @@ function App() {
   const [chairs, setChairs] = useState<string>('');
   const [rentPerChair, setRentPerChair] = useState<string>('');
   const [joiningDate, setJoiningDate] = useState<string>('');
-  
+
   // Results State
   const [results, setResults] = useState<{
     daysInMonth: number;
@@ -41,7 +41,7 @@ function App() {
     const numChairs = parseInt(chairs);
     const monthlyRent = parseFloat(rentPerChair);
     const date = new Date(joiningDate);
-    
+
     // Basic Validation
     if (isNaN(numChairs) || numChairs <= 0 || isNaN(monthlyRent) || monthlyRent <= 0 || isNaN(date.getTime())) {
       setResults(null);
@@ -50,7 +50,7 @@ function App() {
 
     const totalDaysInMonth = getDaysInMonth(date);
     const dayOfMonth = date.getDate();
-    
+
     // Calculate remaining days (Inclusive of joining date)
     // Example: Joining 15th of 30-day month. Days = 30 - 15 + 1 = 16 days.
     const remainingDays = totalDaysInMonth - dayOfMonth + 1;
